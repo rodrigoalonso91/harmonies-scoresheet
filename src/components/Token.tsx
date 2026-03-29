@@ -10,11 +10,12 @@ import { TokenKind } from "@/types";
 
 interface Props {
   kind: TokenKind;
+  size?: number;
 }
 
-export function Token({ kind }: Props) {
+export function Token({ kind, size = 20 }: Props) {
   return (
-    <div className="size-20">
+    <div className="size-20" style={{ width: size, height: size }}>
       <Image
         src={tokens[kind]}
         alt={kind}
