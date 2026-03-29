@@ -1,10 +1,8 @@
 import type {
-  AnimalScoreEntry,
   BoardSide,
   LandscapeBreakdown,
   ScoreBreakdown,
   ScoreSheetInput,
-  ValidationIssue,
 } from "@/types";
 
 const RIVER_SCORES: Record<number, number> = {
@@ -49,10 +47,6 @@ export function scoreBuildings(validBuildings: number): number {
   return validBuildings * 5;
 }
 
-export function scoreEntries(entries: AnimalScoreEntry[]): number {
-  return entries.reduce((sum, entry) => sum + entry.points, 0);
-}
-
 export function calculateLandscapeBreakdown(input: ScoreSheetInput): LandscapeBreakdown {
   const trees = scoreTrees(input.trees);
   const mountains = scoreMountains(input.mountains);
@@ -72,8 +66,8 @@ export function calculateLandscapeBreakdown(input: ScoreSheetInput): LandscapeBr
 
 export function calculateScore(input: ScoreSheetInput): ScoreBreakdown {
   const landscapes = calculateLandscapeBreakdown(input);
-  const animals = scoreEntries(input.animalCards);
-  const natureSpirits = scoreEntries(input.natureSpiritCards);
+  const animals = input.animalPoints;
+  const natureSpirits = input.natureSpiritPoints;
 
   return {
     landscapes,

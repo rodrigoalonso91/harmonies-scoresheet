@@ -1,6 +1,4 @@
-import { TokenKind } from "@/types";
 import { useId } from "react";
-import { Token } from "./Token";
 
 interface Props {
   label: string;

@@ -20,12 +20,6 @@ export interface WaterScoreInput {
   islandCount: number;
 }
 
-export interface AnimalScoreEntry {
-  id: string;
-  label: string;
-  points: number;
-}
-
 export interface ScoreSheetInput {
   boardSide: BoardSide;
   trees: TreeScoreInput;
@@ -33,8 +27,8 @@ export interface ScoreSheetInput {
   fieldGroups: number;
   water: WaterScoreInput;
   validBuildings: number;
-  animalCards: AnimalScoreEntry[];
-  natureSpiritCards: AnimalScoreEntry[];
+  animalPoints: number;
+  natureSpiritPoints: number;
 }
 
 export interface LandscapeBreakdown {

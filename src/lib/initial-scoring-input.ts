@@ -21,6 +21,6 @@ export const INITIAL_INPUT: ScoreSheetInput = {
     islandCount: 0,
   },
   validBuildings: 0,
-  animalCards: [],
-  natureSpiritCards: [],
+  animalPoints: 0,
+  natureSpiritPoints: 0,
 };

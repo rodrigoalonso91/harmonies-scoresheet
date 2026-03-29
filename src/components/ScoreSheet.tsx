@@ -1,6 +1,6 @@
 "use client";
 import { PropsWithChildren, useState } from "react";
-import type { AnimalScoreEntry, BoardSide } from "@/types";
+import type { BoardSide } from "@/types";
 import { calculateScore, INITIAL_INPUT } from "@/lib";
 import { NumberField } from "./NumberField";
 import { Token } from "./Token";
@@ -19,42 +19,6 @@ export function ScoreSheet() {
     }));
   };
 
-  const updateAnimalEntry = (
-    collection: "animalCards" | "natureSpiritCards",
-    id: string,
-    patch: Partial<AnimalScoreEntry>,
-  ) => {
-    setInput((current) => ({
-      ...current,
-      [collection]: current[collection].map((entry) => (
-        entry.id === id
-          ? { ...entry, ...patch }
-          : entry
-      )),
-    }));
-  };
-
-  const addEntry = (collection: "animalCards" | "natureSpiritCards", prefix: string) => {
-    setInput((current) => ({
-      ...current,
-      [collection]: [
-        ...current[collection],
-        {
-          id: `${prefix}-${crypto.randomUUID()}`,
-          label: `${prefix === "animal" ? "Animal" : "Spirit"} ${current[collection].length + 1}`,
-          points: 0,
-        },
-      ],
-    }));
-  };
-
-  const removeEntry = (collection: "animalCards" | "natureSpiritCards", id: string) => {
-    setInput((current) => ({
-      ...current,
-      [collection]: current[collection].filter((entry) => entry.id !== id),
-    }));
-  };
-
   const handleResetScores = () => {
     setInput((current) => ({
       ...INITIAL_INPUT,
@@ -62,7 +26,7 @@ export function ScoreSheet() {
       water: current.boardSide === "A"
         ? { longestRiver: 0, islandCount: 0 }
         : { longestRiver: 0, islandCount: 1 },
-    }))
+    }));
   };
 
   return (
@@ -203,27 +167,27 @@ export function ScoreSheet() {
               </div>
             </Section>
 
-            <CardSection
+            <Section
               title="Animal Cards"
-              description="Enter the current score shown by each card based on the topmost uncovered value."
-              entries={input.animalCards}
-              emptyLabel="No animal cards added."
-              addLabel="Add Animal Card"
-              onAdd={() => addEntry("animalCards", "animal")}
-              onChange={(id, patch) => updateAnimalEntry("animalCards", id, patch)}
-              onRemove={(id) => removeEntry("animalCards", id)}
-            />
+              description="Enter the total points from all animal cards combined. Example: if all animals sum to 27 points, enter 27."
+            >
+              <NumberField
+                label="Total animal points"
+                value={input.animalPoints}
+                onChange={(value) => setInput((current) => ({ ...current, animalPoints: value }))}
+              />
+            </Section>
 
-            <CardSection
+            <Section
               title="Nature's Spirit"
-              description="Use this only if the group plays with Nature's Spirit cards. Enter the final score granted by each completed spirit."
-              entries={input.natureSpiritCards}
-              emptyLabel="No Nature's Spirit cards added."
-              addLabel="Add Spirit Card"
-              onAdd={() => addEntry("natureSpiritCards", "spirit")}
-              onChange={(id, patch) => updateAnimalEntry("natureSpiritCards", id, patch)}
-              onRemove={(id) => removeEntry("natureSpiritCards", id)}
-            />
+              description="Enter the total points granted by your spirit card. Example: if the spirit gives 20 points, enter 20."
+            >
+              <NumberField
+                label="Total spirit points"
+                value={input.natureSpiritPoints}
+                onChange={(value) => setInput((current) => ({ ...current, natureSpiritPoints: value }))}
+              />
+            </Section>
           </div>
 
           <aside className="flex flex-col gap-6">
@@ -289,80 +253,6 @@ function BoardSideToggle({ side, onChange }: BoardSideToggleProps) {
         </button>
       ))}
     </div>
-  );
-}
-
-interface CardSectionProps {
-  title: string;
-  description: string;
-  entries: AnimalScoreEntry[];
-  emptyLabel: string;
-  addLabel: string;
-  onAdd: () => void;
-  onChange: (id: string, patch: Partial<AnimalScoreEntry>) => void;
-  onRemove: (id: string) => void;
-}
-
-function CardSection({
-  title,
-  description,
-  entries,
-  emptyLabel,
-  addLabel,
-  onAdd,
-  onChange,
-  onRemove,
-}: CardSectionProps) {
-  return (
-    <Section title={title} description={description}>
-      <div className="flex flex-col gap-3">
-        {entries.length === 0 ? (
-          <p className="rounded-2xl border border-dashed border-slate-300 px-4 py-5 text-sm text-slate-500">{emptyLabel}</p>
-        ) : (
-          entries.map((entry, index) => (
-            <div key={entry.id} className="grid gap-3 rounded-3xl border border-slate-200 bg-slate-50/70 p-4 md:grid-cols-[1fr_140px_auto]">
-              <label className="grid gap-2">
-                <span className="text-sm font-semibold text-slate-900">Label</span>
-                <input
-                  type="text"
-                  value={entry.label}
-                  onChange={(event) => onChange(entry.id, { label: event.target.value })}
-                  placeholder={`${title === "Animal Cards" ? "Animal" : "Spirit"} ${index + 1}`}
-                  className="h-11 rounded-2xl border border-slate-300 bg-white px-4 text-sm text-slate-950 outline-none transition focus:border-amber-500"
-                />
-              </label>
-
-              <label className="grid gap-2">
-                <span className="text-sm font-semibold text-slate-900">Points</span>
-                <input
-                  type="number"
-                  min={0}
-                  value={entry.points}
-                  onChange={(event) => onChange(entry.id, { points: Math.max(0, Number(event.target.value) || 0) })}
-                  className="h-11 rounded-2xl border border-slate-300 bg-white px-4 text-sm text-slate-950 outline-none transition focus:border-amber-500"
-                />
-              </label>
-
-              <button
-                type="button"
-                onClick={() => onRemove(entry.id)}
-                className="h-11 self-end rounded-2xl border border-slate-300 px-4 text-sm font-semibold text-slate-700 transition hover:border-slate-950 hover:text-slate-950"
-              >
-                Remove
-              </button>
-            </div>
-          ))
-        )}
-
-        <button
-          type="button"
-          onClick={onAdd}
-          className="rounded-2xl border border-dashed border-slate-400 px-4 py-3 text-sm font-semibold text-slate-700 transition hover:border-slate-950 hover:text-slate-950"
-        >
-          {addLabel}
-        </button>
-      </div>
-    </Section>
   );
 }
 
