@@ -1,7 +1,7 @@
-import { NatureToken } from "@/components";
+import { PointDashboard } from "@/components";
 
 export default function Home() {
   return (
-    <NatureToken kind="mountain" />
+    <PointDashboard />
   );
 }

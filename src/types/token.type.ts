@@ -1,0 +1,1 @@
+export type TerrainType = 'building' | 'water' | 'field' | 'grass' | 'mountain';
