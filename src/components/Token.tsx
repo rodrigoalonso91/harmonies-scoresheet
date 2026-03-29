@@ -4,13 +4,15 @@ import grassToken from "@/assets/grass-token.png";
 import fieldToken from "@/assets/field-token.png";
 import buildingToken from "@/assets/building-token.png";
 import waterToken from "@/assets/water-token.png";
-import { TerrainType } from "@/types";
+import animalToken from "@/assets/animal-token.png";
+import spiritToken from "@/assets/spirit-token.png";
+import { TokenKind } from "@/types";
 
 interface Props {
-  kind: TerrainType;
+  kind: TokenKind;
 }
 
-export function NatureToken({ kind }: Props) {
+export function Token({ kind }: Props) {
   return (
     <div className="size-20">
       <Image
@@ -27,4 +29,6 @@ const tokens = {
   field: fieldToken,
   grass: grassToken,
   mountain: mountainToken,
+  animal: animalToken,
+  spirit: spiritToken,
 };

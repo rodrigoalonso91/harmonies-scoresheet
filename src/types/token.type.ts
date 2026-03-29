@@ -1,1 +1,1 @@
-export type TerrainType = 'building' | 'water' | 'field' | 'grass' | 'mountain';
+export type TokenKind = 'building' | 'water' | 'field' | 'grass' | 'mountain' | 'animal' | 'spirit';
