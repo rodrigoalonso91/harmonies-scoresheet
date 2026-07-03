@@ -74,7 +74,8 @@
   "developerFooter": {
     "showCredits": "Afficher les crédits",
     "hideCredits": "Masquer les crédits",
-    "createdBy": "Application créée par"
+    "createdBy": "Application créée par",
+    "collaborate": "Collaborer"
   },
   "totals": {
     "title": "Totaux",

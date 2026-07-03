@@ -74,7 +74,8 @@
   "developerFooter": {
     "showCredits": "Show credits",
     "hideCredits": "Hide credits",
-    "createdBy": "App created by"
+    "createdBy": "App created by",
+    "collaborate": "Collaborate"
   },
   "totals": {
     "title": "Totals",

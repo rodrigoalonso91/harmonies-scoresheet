@@ -3,6 +3,7 @@
 import { ChevronUp, Mail, MessageCircle } from "lucide-react";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
+import { GithubLink } from "./GithubLink";
 
 export function DeveloperFooter() {
   const { t } = useTranslation();
@@ -53,6 +54,9 @@ export function DeveloperFooter() {
               rodrigoalonso.dev@gmail.com
             </a>
           </p>
+          <div className="flex justify-center px-4 pb-4">
+            <GithubLink />
+          </div>
         </div>
       </footer>
     </div>
