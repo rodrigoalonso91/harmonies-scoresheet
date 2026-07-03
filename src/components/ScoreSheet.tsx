@@ -1,7 +1,9 @@
 "use client";
 import { PropsWithChildren, useState } from "react";
+import Image from "next/image";
 import type { BoardSide } from "@/types";
 import { calculateScore, INITIAL_INPUT } from "@/lib";
+import harmoniesLogo from "@/assets/harmonies-logo.png";
 import { NumberField } from "./NumberField";
 import { TokenGroup } from "./TokenGroup";
 
@@ -32,26 +34,29 @@ export function ScoreSheet() {
   return (
     <main className="min-h-screen bg-[radial-gradient(circle_at_top,#fef3c7,#f8fafc_48%,#dbeafe)] px-4 py-8 text-slate-900">
       <div className="mx-auto flex w-full max-w-6xl flex-col gap-6">
-        <header className="rounded-4xl border border-amber-200/70 bg-white/85 p-6 shadow-[0_24px_80px_rgba(15,23,42,0.08)] backdrop-blur">
-          <h2 className="text-sm font-semibold uppercase tracking-[0.3em] text-amber-700">Harmonies</h2>
-          <div className="mt-3 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+        <header className="relative overflow-hidden rounded-4xl border border-white/10 bg-[radial-gradient(circle_at_15%_-25%,#1f6b82,transparent_55%),radial-gradient(circle_at_115%_5%,#2c4d80,transparent_50%),linear-gradient(155deg,#0a1e31,#102f47_58%,#0b2036)] p-8 text-white shadow-[0_28px_90px_rgba(8,20,35,0.45)]">
+          <div aria-hidden className="pointer-events-none absolute -right-16 -top-20 size-56 rounded-full bg-cyan-400/10 blur-3xl" />
+          <div className="relative flex flex-col gap-8 md:flex-row md:items-end md:justify-between">
             <div className="max-w-2xl">
-              <h1 className="font-serif text-4xl leading-tight text-slate-950">Score Sheet</h1>
-              <p className="mt-2 text-sm leading-6 text-slate-600">
+              <div className="w-56 md:w-72">
+                <Image src={harmoniesLogo} alt="Harmonies" priority className="h-auto w-full drop-shadow-[0_4px_18px_rgba(4,12,24,0.6)]" />
+              </div>
+              <p className="mt-3 text-xs font-semibold uppercase tracking-[0.45em] text-cyan-200/80">Score Sheet</p>
+              <p className="mt-4 text-sm leading-6 text-slate-300">
                 Manual scoring for landscapes, animal cards, and Nature&apos;s Spirit cards.
                 Use Side A for rivers and Side B for islands.
               </p>
             </div>
-            <BoardSideToggle side={input.boardSide} onChange={updateBoardSide} />
-          </div>
-          <div className="mt-4">
-            <button
-              type="button"
-              onClick={handleResetScores}
-              className="rounded-full border border-slate-300 px-4 py-2 text-sm font-semibold text-slate-700 transition hover:border-slate-950 hover:text-slate-950"
-            >
-              Reset scores
-            </button>
+            <div className="flex flex-col items-start gap-3 md:items-end">
+              <BoardSideToggle side={input.boardSide} onChange={updateBoardSide} />
+              <button
+                type="button"
+                onClick={handleResetScores}
+                className="rounded-full border border-white/25 bg-white/5 px-4 py-2 text-sm font-semibold text-slate-100 transition hover:border-white hover:bg-white/10 hover:text-white"
+              >
+                Reset scores
+              </button>
+            </div>
           </div>
         </header>
 
@@ -232,15 +237,15 @@ interface BoardSideToggleProps {
 
 function BoardSideToggle({ side, onChange }: BoardSideToggleProps) {
   return (
-    <div className="inline-flex rounded-full border border-slate-200 bg-slate-100 p-1">
+    <div className="inline-flex rounded-full border border-white/20 bg-white/10 p-1 backdrop-blur">
       {(["A", "B"] as const).map((option) => (
         <button
           key={option}
           type="button"
           onClick={() => onChange(option)}
           className={`rounded-full px-4 py-2 text-sm font-semibold transition ${side === option
-            ? "bg-slate-950 text-white"
-            : "text-slate-600 hover:text-slate-950"
+            ? "bg-white text-slate-950 shadow-sm"
+            : "text-slate-200 hover:text-white"
             }`}
         >
           Side {option}
