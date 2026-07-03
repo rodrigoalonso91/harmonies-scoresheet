@@ -9,14 +9,7 @@ interface Props {
   min?: number;
 }
 
-export function NumberField({
-  label,
-  value,
-  onChange,
-  help,
-  disabled = false,
-  min = 0,
-}: Props) {
+export function NumberField({ label, value, onChange, help, disabled = false, min = 0 }: Props) {
   const id = useId();
 
   return (

@@ -30,9 +30,9 @@ export function ScoreSheet() {
   };
 
   return (
-    <main className="min-h-screen bg-[radial-gradient(circle_at_top,_#fef3c7,_#f8fafc_48%,_#dbeafe)] px-4 py-8 text-slate-900">
+    <main className="min-h-screen bg-[radial-gradient(circle_at_top,#fef3c7,#f8fafc_48%,#dbeafe)] px-4 py-8 text-slate-900">
       <div className="mx-auto flex w-full max-w-6xl flex-col gap-6">
-        <header className="rounded-[2rem] border border-amber-200/70 bg-white/85 p-6 shadow-[0_24px_80px_rgba(15,23,42,0.08)] backdrop-blur">
+        <header className="rounded-4xl border border-amber-200/70 bg-white/85 p-6 shadow-[0_24px_80px_rgba(15,23,42,0.08)] backdrop-blur">
           <h2 className="text-sm font-semibold uppercase tracking-[0.3em] text-amber-700">Harmonies</h2>
           <div className="mt-3 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
             <div className="max-w-2xl">
@@ -221,7 +221,7 @@ interface SectionProps {
 
 function Section({ title, description, children }: PropsWithChildren<SectionProps>) {
   return (
-    <section className="rounded-[2rem] border border-white/80 bg-white/80 p-5 shadow-[0_22px_60px_rgba(15,23,42,0.06)] backdrop-blur">
+    <section className="rounded-4xl border border-white/80 bg-white/80 p-5 shadow-[0_22px_60px_rgba(15,23,42,0.06)] backdrop-blur">
       <div className="mb-4">
         <h2 className="text-xl font-semibold text-slate-950">{title}</h2>
         <p className="mt-1 text-sm leading-6 text-slate-600">{description}</p>
