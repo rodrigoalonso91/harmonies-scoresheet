@@ -1,4 +1,4 @@
-import { useId } from "react";
+import { useEffect, useId, useState } from "react";
 
 interface Props {
   label: string;
@@ -7,10 +7,26 @@ interface Props {
   help?: string;
   disabled?: boolean;
   min?: number;
+  max?: number;
 }
 
-export function NumberField({ label, value, onChange, help, disabled = false, min = 0 }: Props) {
+export function NumberField({ label, value, onChange, help, disabled = false, min = 0, max = 20 }: Props) {
   const id = useId();
+  const [draft, setDraft] = useState(String(value));
+
+  useEffect(() => {
+    setDraft(String(value));
+  }, [value]);
+
+  const commit = (raw: string) => {
+    if (raw === "") {
+      onChange(min);
+      return;
+    }
+    const clamped = Math.min(max, Math.max(min, Number(raw)));
+    onChange(clamped);
+    setDraft(String(clamped));
+  };
 
   return (
     <label htmlFor={id} className={`grid gap-2 rounded-3xl border p-4 ${disabled ? "border-slate-200 bg-slate-100/80" : "border-slate-200 bg-white"}`}>
@@ -20,9 +36,21 @@ export function NumberField({ label, value, onChange, help, disabled = false, mi
         id={id}
         type="number"
         min={min}
-        value={value}
+        max={max}
+        value={draft}
         disabled={disabled}
-        onChange={(event) => onChange(Math.max(min, Number(event.target.value) || 0))}
+        onFocus={(event) => event.target.select()}
+        onChange={(event) => {
+          const next = event.target.value;
+          setDraft(next);
+          if (next !== "") {
+            const parsed = Number(next);
+            if (!Number.isNaN(parsed) && parsed >= min && parsed <= max) {
+              onChange(parsed);
+            }
+          }
+        }}
+        onBlur={(event) => commit(event.target.value)}
         className="h-11 rounded-2xl border border-slate-300 bg-white px-4 text-base text-slate-950 outline-none transition focus:border-amber-500 disabled:bg-slate-100"
       />
     </label>
