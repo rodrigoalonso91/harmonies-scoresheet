@@ -3,7 +3,7 @@ import { PropsWithChildren, useState } from "react";
 import type { BoardSide } from "@/types";
 import { calculateScore, INITIAL_INPUT } from "@/lib";
 import { NumberField } from "./NumberField";
-import { Token } from "./Token";
+import { TokenGroup } from "./TokenGroup";
 
 export function ScoreSheet() {
   const [input, setInput] = useState(INITIAL_INPUT);
@@ -61,8 +61,7 @@ export function ScoreSheet() {
               title="Landscapes"
               description="Enter only scoring groups or valid structures. The app calculates subtotals from the official rules."
             >
-              <div id="grass" className="grid gap-4 md:grid-cols-2 mb-4">
-                <div className="mx-auto"><Token kind="grass" size={50} /></div>
+              <TokenGroup id="grass" kind="grass">
                 <NumberField
                   label="Green-only trees"
                   help="Single green token trees score 1 point each."
@@ -90,10 +89,9 @@ export function ScoreSheet() {
                     trees: { ...current.trees, doubleBrownGreen: value },
                   }))}
                 />
-              </div>
+              </TokenGroup>
 
-              <div id="mountains" className="grid gap-4 md:grid-cols-2 mb-4">
-                <div className="mx-auto"><Token kind="mountain" size={50} /></div>
+              <TokenGroup id="mountains" kind="mountain">
                 <NumberField
                   label="Height 1 mountains"
                   value={input.mountains.height1}
@@ -118,31 +116,27 @@ export function ScoreSheet() {
                     mountains: { ...current.mountains, height3: value },
                   }))}
                 />
-              </div>
+              </TokenGroup>
 
-
-              <div id="fields" className="grid gap-4 md:grid-cols-2 mb-4">
-                <div className="mx-auto"><Token kind="field" size={50} /></div>
+              <TokenGroup id="fields" kind="field">
                 <NumberField
                   label="Field groups"
                   help="Count each yellow group of size 2 or more once."
                   value={input.fieldGroups}
                   onChange={(value) => setInput((current) => ({ ...current, fieldGroups: value }))}
                 />
-              </div>
+              </TokenGroup>
 
-              <div id="buildings" className="grid gap-4 md:grid-cols-2 mb-4">
-                <div className="mx-auto"><Token kind="building" size={50} /></div>
+              <TokenGroup id="buildings" kind="building">
                 <NumberField
                   label="Valid buildings"
                   help="Each must be surrounded by at least 3 different colors."
                   value={input.validBuildings}
                   onChange={(value) => setInput((current) => ({ ...current, validBuildings: value }))}
                 />
-              </div>
+              </TokenGroup>
 
-              <div id="water" className="grid gap-4 md:grid-cols-2 mb-4">
-                <div className="mx-auto"><Token kind="water" size={50} /></div>
+              <TokenGroup id="water" kind="water">
                 <NumberField
                   label="Longest river"
                   help="Side A only. Score 0, 2, 5, 8, 11, 15, then +4 per token above 6."
@@ -164,7 +158,7 @@ export function ScoreSheet() {
                     water: { ...current.water, islandCount: input.boardSide === "B" ? Math.max(1, value) : value },
                   }))}
                 />
-              </div>
+              </TokenGroup>
             </Section>
 
             <Section
