@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { I18nProvider } from "@/i18n/I18nProvider";
 
 export const metadata: Metadata = {
   title: "Harmonies Score Sheet",
@@ -14,7 +15,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        {children}
+        <I18nProvider>{children}</I18nProvider>
       </body>
     </html>
   );

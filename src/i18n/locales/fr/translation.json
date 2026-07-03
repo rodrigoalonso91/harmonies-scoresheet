@@ -1,0 +1,87 @@
+{
+  "metadata": {
+    "title": "Feuille de score Harmonies",
+    "description": "Application de score manuel pour les paysages, les cartes animaux et les cartes Esprit de la Nature de Harmonies."
+  },
+  "header": {
+    "logoAlt": "Harmonies",
+    "subtitle": "Feuille de score",
+    "intro": "Score manuel pour les paysages, les cartes animaux et les cartes Esprit de la Nature. Utilisez la Face A pour les rivières et la Face B pour les îles.",
+    "resetScores": "Réinitialiser le score",
+    "boardSide": "Face {{side}}"
+  },
+  "languageSwitcher": {
+    "label": "Langue",
+    "en": "English",
+    "es": "Español",
+    "fr": "Français"
+  },
+  "landscapes": {
+    "title": "Paysages",
+    "description": "Saisissez uniquement les groupes qui marquent ou les structures valides. L'application calcule les sous-totaux selon les règles officielles.",
+    "trees": {
+      "greenOnly": {
+        "label": "Arbres tout verts",
+        "help": "Chaque arbre d'un seul jeton vert vaut 1 point."
+      },
+      "brownGreen": {
+        "label": "Arbres marron + vert",
+        "help": "Les arbres avec 1 marron sous 1 vert valent 3 points."
+      },
+      "doubleBrownGreen": {
+        "label": "Arbres 2 marron + vert",
+        "help": "Les arbres avec 2 marrons sous 1 vert valent 5 points."
+      }
+    },
+    "mountains": {
+      "height1": "Montagnes de hauteur 1",
+      "height2": "Montagnes de hauteur 2",
+      "height3": "Montagnes de hauteur 3"
+    },
+    "fields": {
+      "groups": {
+        "label": "Groupes de champs",
+        "help": "Comptez une fois chaque groupe jaune de taille 2 ou plus."
+      }
+    },
+    "buildings": {
+      "valid": {
+        "label": "Bâtiments valides",
+        "help": "Chacun doit être entouré d'au moins 3 couleurs différentes."
+      }
+    },
+    "water": {
+      "longestRiver": {
+        "label": "Rivière la plus longue",
+        "help": "Face A uniquement. Score 0, 2, 5, 8, 11, 15, puis +4 par jeton au-delà de 6."
+      },
+      "islandCount": {
+        "label": "Nombre d'îles",
+        "help": "Face B uniquement. Il y a toujours au moins 1 île."
+      }
+    }
+  },
+  "animals": {
+    "title": "Cartes animaux",
+    "description": "Saisissez le total des points de toutes les cartes animaux combinées. Exemple : si tous les animaux totalisent 27 points, saisissez 27.",
+    "totalPoints": "Total des points animaux"
+  },
+  "natureSpirit": {
+    "title": "Esprit de la Nature",
+    "description": "Saisissez le total des points accordés par votre carte esprit. Exemple : si l'esprit donne 20 points, saisissez 20.",
+    "totalPoints": "Total des points esprit"
+  },
+  "totals": {
+    "title": "Totaux",
+    "description": "Les scores des paysages et des cartes sont suivis séparément pour correspondre au bloc de score imprimé.",
+    "trees": "Arbres",
+    "mountains": "Montagnes",
+    "fields": "Champs",
+    "water": "Eau",
+    "buildings": "Bâtiments",
+    "landscapes": "Paysages",
+    "animalCards": "Cartes animaux",
+    "natureSpirit": "Esprit de la Nature",
+    "grandTotal": "Total général"
+  }
+}

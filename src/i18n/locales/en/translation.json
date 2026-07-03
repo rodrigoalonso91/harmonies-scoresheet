@@ -1,0 +1,87 @@
+{
+  "metadata": {
+    "title": "Harmonies Score Sheet",
+    "description": "Manual scoring app for Harmonies landscapes, animal cards, and Nature's Spirit cards."
+  },
+  "header": {
+    "logoAlt": "Harmonies",
+    "subtitle": "Score Sheet",
+    "intro": "Manual scoring for landscapes, animal cards, and Nature's Spirit cards. Use Side A for rivers and Side B for islands.",
+    "resetScores": "Reset scores",
+    "boardSide": "Side {{side}}"
+  },
+  "languageSwitcher": {
+    "label": "Language",
+    "en": "English",
+    "es": "Español",
+    "fr": "Français"
+  },
+  "landscapes": {
+    "title": "Landscapes",
+    "description": "Enter only scoring groups or valid structures. The app calculates subtotals from the official rules.",
+    "trees": {
+      "greenOnly": {
+        "label": "Green-only trees",
+        "help": "Single green token trees score 1 point each."
+      },
+      "brownGreen": {
+        "label": "Brown + green trees",
+        "help": "Trees with 1 brown under 1 green score 3 points."
+      },
+      "doubleBrownGreen": {
+        "label": "2 brown + green trees",
+        "help": "Trees with 2 brown under 1 green score 5 points."
+      }
+    },
+    "mountains": {
+      "height1": "Height 1 mountains",
+      "height2": "Height 2 mountains",
+      "height3": "Height 3 mountains"
+    },
+    "fields": {
+      "groups": {
+        "label": "Field groups",
+        "help": "Count each yellow group of size 2 or more once."
+      }
+    },
+    "buildings": {
+      "valid": {
+        "label": "Valid buildings",
+        "help": "Each must be surrounded by at least 3 different colors."
+      }
+    },
+    "water": {
+      "longestRiver": {
+        "label": "Longest river",
+        "help": "Side A only. Score 0, 2, 5, 8, 11, 15, then +4 per token above 6."
+      },
+      "islandCount": {
+        "label": "Island count",
+        "help": "Side B only. There is always at least 1 island."
+      }
+    }
+  },
+  "animals": {
+    "title": "Animal Cards",
+    "description": "Enter the total points from all animal cards combined. Example: if all animals sum to 27 points, enter 27.",
+    "totalPoints": "Total animal points"
+  },
+  "natureSpirit": {
+    "title": "Nature's Spirit",
+    "description": "Enter the total points granted by your spirit card. Example: if the spirit gives 20 points, enter 20.",
+    "totalPoints": "Total spirit points"
+  },
+  "totals": {
+    "title": "Totals",
+    "description": "Landscape and card scores are tracked separately to match the printed score pad.",
+    "trees": "Trees",
+    "mountains": "Mountains",
+    "fields": "Fields",
+    "water": "Water",
+    "buildings": "Buildings",
+    "landscapes": "Landscapes",
+    "animalCards": "Animal cards",
+    "natureSpirit": "Nature's Spirit",
+    "grandTotal": "Grand total"
+  }
+}

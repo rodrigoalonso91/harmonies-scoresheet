@@ -1,0 +1,87 @@
+{
+  "metadata": {
+    "title": "Hoja de puntuación de Harmonies",
+    "description": "App de puntuación manual para paisajes, cartas de animales y cartas del Espíritu de la Naturaleza de Harmonies."
+  },
+  "header": {
+    "logoAlt": "Harmonies",
+    "subtitle": "Hoja de puntuación",
+    "intro": "Puntuación manual para paisajes, cartas de animales y cartas del Espíritu de la Naturaleza. Usa el Lado A para ríos y el Lado B para islas.",
+    "resetScores": "Reiniciar puntuación",
+    "boardSide": "Lado {{side}}"
+  },
+  "languageSwitcher": {
+    "label": "Idioma",
+    "en": "English",
+    "es": "Español",
+    "fr": "Français"
+  },
+  "landscapes": {
+    "title": "Paisajes",
+    "description": "Ingresa solo grupos que puntúan o estructuras válidas. La app calcula los subtotales según las reglas oficiales.",
+    "trees": {
+      "greenOnly": {
+        "label": "Árboles solo verdes",
+        "help": "Cada árbol de una sola ficha verde vale 1 punto."
+      },
+      "brownGreen": {
+        "label": "Árboles marrón + verde",
+        "help": "Los árboles con 1 marrón bajo 1 verde valen 3 puntos."
+      },
+      "doubleBrownGreen": {
+        "label": "Árboles 2 marrón + verde",
+        "help": "Los árboles con 2 marrones bajo 1 verde valen 5 puntos."
+      }
+    },
+    "mountains": {
+      "height1": "Montañas de altura 1",
+      "height2": "Montañas de altura 2",
+      "height3": "Montañas de altura 3"
+    },
+    "fields": {
+      "groups": {
+        "label": "Grupos de campos",
+        "help": "Cuenta una vez cada grupo amarillo de tamaño 2 o más."
+      }
+    },
+    "buildings": {
+      "valid": {
+        "label": "Edificios válidos",
+        "help": "Cada uno debe estar rodeado por al menos 3 colores diferentes."
+      }
+    },
+    "water": {
+      "longestRiver": {
+        "label": "Río más largo",
+        "help": "Solo Lado A. Puntúa 0, 2, 5, 8, 11, 15, y luego +4 por cada ficha sobre 6."
+      },
+      "islandCount": {
+        "label": "Cantidad de islas",
+        "help": "Solo Lado B. Siempre hay al menos 1 isla."
+      }
+    }
+  },
+  "animals": {
+    "title": "Cartas de animales",
+    "description": "Ingresa el total de puntos de todas las cartas de animales juntas. Ejemplo: si todos los animales suman 27 puntos, ingresa 27.",
+    "totalPoints": "Puntos totales de animales"
+  },
+  "natureSpirit": {
+    "title": "Espíritu de la Naturaleza",
+    "description": "Ingresa el total de puntos otorgados por tu carta de espíritu. Ejemplo: si el espíritu da 20 puntos, ingresa 20.",
+    "totalPoints": "Puntos totales del espíritu"
+  },
+  "totals": {
+    "title": "Totales",
+    "description": "Los puntos de paisajes y de cartas se registran por separado para coincidir con el bloc de puntuación impreso.",
+    "trees": "Árboles",
+    "mountains": "Montañas",
+    "fields": "Campos",
+    "water": "Agua",
+    "buildings": "Edificios",
+    "landscapes": "Paisajes",
+    "animalCards": "Cartas de animales",
+    "natureSpirit": "Espíritu de la Naturaleza",
+    "grandTotal": "Total general"
+  }
+}
