@@ -71,6 +71,11 @@
     "description": "Saisissez le total des points accordés par votre carte esprit. Exemple : si l'esprit donne 20 points, saisissez 20.",
     "totalPoints": "Total des points esprit"
   },
+  "developerFooter": {
+    "showCredits": "Afficher les crédits",
+    "hideCredits": "Masquer les crédits",
+    "createdBy": "Application créée par"
+  },
   "totals": {
     "title": "Totaux",
     "description": "Les scores des paysages et des cartes sont suivis séparément pour correspondre au bloc de score imprimé.",

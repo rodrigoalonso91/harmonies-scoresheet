@@ -71,6 +71,11 @@
     "description": "Ingresa el total de puntos otorgados por tu carta de espíritu. Ejemplo: si el espíritu da 20 puntos, ingresa 20.",
     "totalPoints": "Puntos totales del espíritu"
   },
+  "developerFooter": {
+    "showCredits": "Mostrar créditos",
+    "hideCredits": "Ocultar créditos",
+    "createdBy": "App creada por"
+  },
   "totals": {
     "title": "Totales",
     "description": "Los puntos de paisajes y de cartas se registran por separado para coincidir con el bloc de puntuación impreso.",

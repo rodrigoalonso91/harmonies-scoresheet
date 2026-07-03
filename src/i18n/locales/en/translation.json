@@ -71,6 +71,11 @@
     "description": "Enter the total points granted by your spirit card. Example: if the spirit gives 20 points, enter 20.",
     "totalPoints": "Total spirit points"
   },
+  "developerFooter": {
+    "showCredits": "Show credits",
+    "hideCredits": "Hide credits",
+    "createdBy": "App created by"
+  },
   "totals": {
     "title": "Totals",
     "description": "Landscape and card scores are tracked separately to match the printed score pad.",
