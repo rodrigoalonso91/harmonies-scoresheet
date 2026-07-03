@@ -1,5 +1,5 @@
 "use client";
-import { PropsWithChildren, useState } from "react";
+import { Children, cloneElement, isValidElement, PropsWithChildren, ReactElement, useState } from "react";
 import type { TokenKind } from "@/types";
 import { Token } from "./Token";
 
@@ -35,8 +35,17 @@ export function TokenGroup({ kind, id, defaultOpen = true, children }: PropsWith
         </svg>
       </button>
       {open && (
-        <div className="mt-4 grid gap-4 md:grid-cols-2">
-          {children}
+        <div className="mt-4 grid grid-cols-2 gap-4">
+          {Children.map(children, (child, index) => {
+            const count = Children.count(children);
+            const spanFull = index === count - 1 && count % 2 === 1;
+            if (spanFull && isValidElement<{ className?: string }>(child)) {
+              return cloneElement(child as ReactElement<{ className?: string }>, {
+                className: `${child.props.className ?? ""} col-span-2`.trim(),
+              });
+            }
+            return child;
+          })}
         </div>
       )}
     </div>
