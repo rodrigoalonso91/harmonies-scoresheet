@@ -13,7 +13,7 @@ interface Props {
   className?: string;
 }
 
-export function NumberField({ label, value, onChange, help, disabled = false, min = 0, max = 20, className }: Props) {
+export function NumberField({ label, value, onChange, help, disabled = false, min = 0, max = 150, className }: Props) {
   const id = useId();
   const [draft, setDraft] = useState(String(value));
 
