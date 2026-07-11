@@ -16,7 +16,7 @@ const RIVER_SCORES: Record<number, number> = {
 };
 
 export function scoreTrees(input: ScoreSheetInput["trees"]): number {
-  return (input.greenOnly * 1) + (input.brownGreen * 3) + (input.doubleBrownGreen * 5);
+  return (input.greenOnly * 1) + (input.brownGreen * 3) + (input.doubleBrownGreen * 7);
 }
 
 export function scoreMountains(input: ScoreSheetInput["mountains"]): number {

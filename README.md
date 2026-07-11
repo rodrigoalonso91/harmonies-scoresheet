@@ -31,7 +31,7 @@ El prototipo ya contempla parte de las reglas de puntuación del juego:
 - Árboles:
   - verde solo = 1 punto
   - marrón + verde = 3 puntos
-  - 2 marrones + verde = 5 puntos
+  - 2 marrones + verde = 7 puntos
 - Montañas:
   - altura 1 = 1 punto
   - altura 2 = 3 puntos
