@@ -22,6 +22,7 @@ export type SessionAction =
   | { type: "SET_BOARD_SIDE"; boardSide: BoardSide }
   | { type: "UPDATE_SHEET"; playerId: string; patch: PlayerScoreSheetPatch }
   | { type: "RESET_PLAYER_SCORES"; playerId: string }
+  | { type: "REMATCH" }
   | { type: "SET_SCORING_MODE"; mode: ScoringMode }
   | { type: "SET_ACTIVE_STEP"; index: number }
   | { type: "SET_STATUS"; status: SessionStatus };
@@ -183,6 +184,22 @@ function reduce(session: GameSession, action: SessionAction): GameSession {
           ...player,
           sheet: createInitialSheet(session.boardSide),
         })),
+      };
+
+    /** Partida nueva con la misma mesa: se conservan jugadores, nombres,
+     *  colores, lado del tablero y modo de carga; solo se ponen las hojas en cero. */
+    case "REMATCH":
+      return {
+        ...session,
+        id: crypto.randomUUID(),
+        players: session.players.map((player) => ({
+          ...player,
+          sheet: createInitialSheet(session.boardSide),
+        })),
+        activePlayerId: session.players[0].id,
+        activeStepIndex: 0,
+        status: "scoring",
+        createdAt: Date.now(),
       };
 
     case "SET_SCORING_MODE":

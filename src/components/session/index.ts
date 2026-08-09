@@ -5,4 +5,5 @@ export * from "./PlayerTabs";
 export * from "./GameSessionScreen";
 export * from "./GameResults";
 export * from "./player-presentation";
+export * from "./use-player-rename";
 export * from "./GameRouter";

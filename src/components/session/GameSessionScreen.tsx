@@ -11,7 +11,7 @@ import { AppHeader } from "./AppHeader";
 import { PlayerTabs } from "./PlayerTabs";
 import { usePlayerName } from "./player-presentation";
 
-type PendingAction = "reset-player" | "new-game" | "board-side";
+type PendingAction = "reset-player" | "rematch" | "new-game" | "board-side";
 
 export function GameSessionScreen() {
   const { t } = useTranslation();
@@ -44,6 +44,12 @@ export function GameSessionScreen() {
       description: t("session.resetPlayerConfirm", { name: activeName }),
       confirmLabel: t("session.resetPlayer"),
       onConfirm: resetScores,
+    },
+    rematch: {
+      title: t("session.rematchTitle"),
+      description: t("session.rematchConfirm"),
+      confirmLabel: t("session.rematch"),
+      onConfirm: () => dispatch({ type: "REMATCH" }),
     },
     "new-game": {
       title: t("session.newGameTitle"),
@@ -90,6 +96,13 @@ export function GameSessionScreen() {
                 {t("session.resetPlayer")}
               </button>
             )}
+            <button
+              type="button"
+              onClick={() => setPending("rematch")}
+              className="rounded-full border border-white/25 bg-white/5 px-4 py-2 text-sm font-semibold text-slate-100 transition hover:border-white hover:bg-white/10 hover:text-white"
+            >
+              {t("session.rematch")}
+            </button>
             <button
               type="button"
               onClick={() => setPending("new-game")}

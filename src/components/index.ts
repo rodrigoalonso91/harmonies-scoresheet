@@ -3,6 +3,7 @@ export * from "./TokenGroup";
 export * from "./PointDashboard";
 export * from "./PointField";
 export * from "./NumberField";
+export * from "./NumberStepper";
 export * from "./LanguageSwitcher";
 export * from "./DeveloperFooter";
 export * from "./ui";

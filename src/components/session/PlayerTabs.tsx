@@ -5,13 +5,14 @@ import { MAX_PLAYERS } from "@/types";
 import { useGameSession, usePlayerStandings } from "@/state";
 import { ConfirmDialog } from "../ui";
 import { PLAYER_DOT_CLASS, usePlayerName } from "./player-presentation";
+import { usePlayerRename } from "./use-player-rename";
 
 export function PlayerTabs() {
   const { t } = useTranslation();
   const { session, dispatch } = useGameSession();
   const standings = usePlayerStandings();
   const resolvePlayerName = usePlayerName();
-  const [editingPlayerId, setEditingPlayerId] = useState<string | null>(null);
+  const rename = usePlayerRename();
   const [pendingRemovalId, setPendingRemovalId] = useState<string | null>(null);
 
   const pendingRemovalIndex = session.players.findIndex(
@@ -26,28 +27,14 @@ export function PlayerTabs() {
           const active = player.id === session.activePlayerId;
           const name = resolvePlayerName(player, index);
 
-          if (active && editingPlayerId === player.id) {
+          if (active && rename.isEditing(player.id)) {
             return (
               <input
                 key={player.id}
-                autoFocus
                 type="text"
-                maxLength={20}
-                defaultValue={player.name}
                 placeholder={name}
                 aria-label={t("players.rename")}
-                onBlur={(event) => {
-                  dispatch({
-                    type: "RENAME_PLAYER",
-                    playerId: player.id,
-                    name: event.target.value,
-                  });
-                  setEditingPlayerId(null);
-                }}
-                onKeyDown={(event) => {
-                  if (event.key === "Enter") event.currentTarget.blur();
-                  if (event.key === "Escape") setEditingPlayerId(null);
-                }}
+                {...rename.getInputProps(player)}
                 className="h-10 w-40 shrink-0 rounded-2xl border border-white bg-white px-3 text-sm font-semibold text-slate-950 outline-none"
               />
             );
@@ -64,7 +51,7 @@ export function PlayerTabs() {
                 type="button"
                 onClick={() =>
                   active
-                    ? setEditingPlayerId(player.id)
+                    ? rename.startEditing(player.id)
                     : dispatch({ type: "SET_ACTIVE_PLAYER", playerId: player.id })
                 }
                 aria-current={active ? "true" : undefined}

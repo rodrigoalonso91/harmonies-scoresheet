@@ -1,11 +1,13 @@
 "use client";
 import { useTranslation } from "react-i18next";
+import { MAX_PLAYERS } from "@/types";
 import { clampStepIndex, getScoringSteps, SCORING_STEP_COUNT } from "@/lib";
 import { useGameSession, usePlayerStandings } from "@/state";
-import { NumberField } from "../NumberField";
 import { Token } from "../Token";
 import { Section } from "../ui";
-import { PLAYER_DOT_CLASS, usePlayerName } from "../session/player-presentation";
+import { usePlayerName } from "../session/player-presentation";
+import { usePlayerRename } from "../session/use-player-rename";
+import { PlayerStepRow } from "./PlayerStepRow";
 import { StepNavigator } from "./StepNavigator";
 
 export function CategoryScoringView() {
@@ -13,6 +15,7 @@ export function CategoryScoringView() {
   const { session, dispatch } = useGameSession();
   const standings = usePlayerStandings();
   const resolvePlayerName = usePlayerName();
+  const rename = usePlayerRename();
 
   const steps = getScoringSteps(session.boardSide);
   const activeIndex = clampStepIndex(session.activeStepIndex);
@@ -32,27 +35,29 @@ export function CategoryScoringView() {
 
         <div className="mt-6 grid gap-3 sm:grid-cols-2">
           {standings.map(({ player, score }, index) => (
-            <NumberField
+            <PlayerStepRow
               key={player.id}
-              label={resolvePlayerName(player, index)}
-              value={step.read(player.sheet)}
-              min={step.min}
-              onChange={(value) =>
-                dispatch({ type: "UPDATE_SHEET", playerId: player.id, patch: step.write(value) })
-              }
-              labelPrefix={
-                <span
-                  aria-hidden
-                  className={`size-2.5 shrink-0 rounded-full ${PLAYER_DOT_CLASS[player.color]}`}
-                />
-              }
-              labelSuffix={
-                <span className="shrink-0 text-base font-bold tabular-nums text-slate-400">
-                  {score.total}
-                </span>
-              }
+              player={player}
+              name={resolvePlayerName(player, index)}
+              total={score.total}
+              step={step}
+              rename={rename}
             />
           ))}
+
+          {/* Invariante I1: hasta MAX_PLAYERS jugadores. */}
+          {session.players.length < MAX_PLAYERS && (
+            <button
+              type="button"
+              onClick={() => dispatch({ type: "ADD_PLAYER" })}
+              className="flex min-h-28 items-center justify-center gap-2 rounded-3xl border border-dashed border-slate-300 p-4 text-sm font-semibold text-slate-500 transition hover:border-slate-500 hover:bg-white hover:text-slate-950"
+            >
+              <span aria-hidden className="text-lg leading-none">
+                +
+              </span>
+              {t("players.add")}
+            </button>
+          )}
         </div>
 
         <div className="mt-6 flex items-center justify-between gap-3">
