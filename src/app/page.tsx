@@ -1,7 +1,10 @@
-import { ScoreSheet } from "@/components";
+import { GameRouter } from "@/components";
+import { GameSessionProvider } from "@/state";
 
 export default function Home() {
   return (
-    <ScoreSheet />
+    <GameSessionProvider>
+      <GameRouter />
+    </GameSessionProvider>
   );
 }

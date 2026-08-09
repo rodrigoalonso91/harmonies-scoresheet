@@ -10,6 +10,54 @@
     "resetScores": "Reiniciar puntuación",
     "boardSide": "Lado {{side}}"
   },
+  "common": {
+    "cancel": "Cancelar"
+  },
+  "setup": {
+    "title": "Nueva partida",
+    "description": "Elegí cuántos jugadores hay en la mesa. Después podés renombrarlos o agregar más.",
+    "playerCount": "Cantidad de jugadores",
+    "playerName": "Nombre del jugador {{index}}",
+    "start": "Empezar a puntuar",
+    "quickStart": "Empezar rápido",
+    "quickStartHelp": "Empezar rápido crea 2 jugadores con nombres por defecto en el Lado A."
+  },
+  "players": {
+    "defaultName": "Jugador {{index}}",
+    "add": "Agregar jugador",
+    "remove": "Eliminar jugador",
+    "removeTitle": "¿Eliminar este jugador?",
+    "removeConfirm": "Se borran {{name}} y todos sus puntajes. No se puede deshacer.",
+    "rename": "Renombrar jugador"
+  },
+  "resume": {
+    "title": "¿Continuar tu partida?",
+    "description": "Hay una partida sin terminar guardada en este dispositivo.",
+    "continue": "Continuar partida",
+    "newGame": "Nueva partida"
+  },
+  "results": {
+    "title": "Resultados finales",
+    "description": "Ordenados por total general. Los jugadores con el mismo total comparten posición.",
+    "breakdownTitle": "Desglose por categoría",
+    "breakdownDescription": "Todas las categorías, lado a lado.",
+    "winner": "Ganador",
+    "tie": "Empate",
+    "category": "Categoría",
+    "viewResults": "Ver resultados",
+    "backToScoring": "Volver a puntuar"
+  },
+  "session": {
+    "resetPlayer": "Reiniciar puntuación",
+    "resetPlayerTitle": "¿Reiniciar los puntajes de este jugador?",
+    "resetPlayerConfirm": "Todos los puntajes de {{name}} vuelven a cero. Los demás jugadores no se ven afectados.",
+    "newGame": "Nueva partida",
+    "newGameTitle": "¿Empezar una nueva partida?",
+    "newGameConfirm": "Se borran la partida actual y los puntajes de todos los jugadores.",
+    "boardSideTitle": "¿Cambiar el lado del tablero?",
+    "boardSideConfirm": "Pasar al Lado {{side}} borra los puntajes de agua de todos los jugadores.",
+    "boardSideChange": "Cambiar de lado"
+  },
   "languageSwitcher": {
     "label": "Idioma",
     "en": "English",

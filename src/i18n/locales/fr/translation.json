@@ -10,6 +10,54 @@
     "resetScores": "Réinitialiser le score",
     "boardSide": "Face {{side}}"
   },
+  "common": {
+    "cancel": "Annuler"
+  },
+  "setup": {
+    "title": "Nouvelle partie",
+    "description": "Choisissez le nombre de joueurs à table. Vous pourrez les renommer ou en ajouter ensuite.",
+    "playerCount": "Nombre de joueurs",
+    "playerName": "Nom du joueur {{index}}",
+    "start": "Commencer le score",
+    "quickStart": "Démarrage rapide",
+    "quickStartHelp": "Le démarrage rapide crée 2 joueurs avec des noms par défaut sur la Face A."
+  },
+  "players": {
+    "defaultName": "Joueur {{index}}",
+    "add": "Ajouter un joueur",
+    "remove": "Supprimer le joueur",
+    "removeTitle": "Supprimer ce joueur ?",
+    "removeConfirm": "{{name}} et tous ses scores seront supprimés. Cette action est irréversible.",
+    "rename": "Renommer le joueur"
+  },
+  "resume": {
+    "title": "Reprendre votre partie ?",
+    "description": "Une partie non terminée est enregistrée sur cet appareil.",
+    "continue": "Reprendre la partie",
+    "newGame": "Nouvelle partie"
+  },
+  "results": {
+    "title": "Classement final",
+    "description": "Classés par total général. Les joueurs à égalité partagent la même position.",
+    "breakdownTitle": "Détail par catégorie",
+    "breakdownDescription": "Toutes les catégories, côte à côte.",
+    "winner": "Gagnant",
+    "tie": "Égalité",
+    "category": "Catégorie",
+    "viewResults": "Voir les résultats",
+    "backToScoring": "Retour au score"
+  },
+  "session": {
+    "resetPlayer": "Réinitialiser le score",
+    "resetPlayerTitle": "Réinitialiser les scores de ce joueur ?",
+    "resetPlayerConfirm": "Tous les scores de {{name}} reviennent à zéro. Les autres joueurs ne sont pas affectés.",
+    "newGame": "Nouvelle partie",
+    "newGameTitle": "Commencer une nouvelle partie ?",
+    "newGameConfirm": "La partie en cours et les scores de tous les joueurs seront supprimés.",
+    "boardSideTitle": "Changer de face du plateau ?",
+    "boardSideConfirm": "Passer à la Face {{side}} efface les scores d'eau de tous les joueurs.",
+    "boardSideChange": "Changer de face"
+  },
   "languageSwitcher": {
     "label": "Langue",
     "en": "English",

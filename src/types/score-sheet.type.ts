@@ -20,8 +20,11 @@ export interface WaterScoreInput {
   islandCount: number;
 }
 
-export interface ScoreSheetInput {
-  boardSide: BoardSide;
+/**
+ * Hoja de puntaje de un jugador. No incluye `boardSide`: el lado del tablero es
+ * una propiedad de la partida y aplica por igual a todos los jugadores.
+ */
+export interface PlayerScoreSheet {
   trees: TreeScoreInput;
   mountains: MountainScoreInput;
   fieldGroups: number;
@@ -29,6 +32,17 @@ export interface ScoreSheetInput {
   validBuildings: number;
   animalPoints: number;
   natureSpiritPoints: number;
+}
+
+/** Cambio parcial sobre una hoja. Los grupos anidados se mezclan de forma superficial. */
+export interface PlayerScoreSheetPatch {
+  trees?: Partial<TreeScoreInput>;
+  mountains?: Partial<MountainScoreInput>;
+  water?: Partial<WaterScoreInput>;
+  fieldGroups?: number;
+  validBuildings?: number;
+  animalPoints?: number;
+  natureSpiritPoints?: number;
 }
 
 export interface LandscapeBreakdown {

@@ -10,6 +10,54 @@
     "resetScores": "Reset scores",
     "boardSide": "Side {{side}}"
   },
+  "common": {
+    "cancel": "Cancel"
+  },
+  "setup": {
+    "title": "New game",
+    "description": "Choose how many players are at the table. You can rename them or add more later.",
+    "playerCount": "Number of players",
+    "playerName": "Player {{index}} name",
+    "start": "Start scoring",
+    "quickStart": "Quick start",
+    "quickStartHelp": "Quick start creates 2 players with default names on Side A."
+  },
+  "players": {
+    "defaultName": "Player {{index}}",
+    "add": "Add player",
+    "remove": "Remove player",
+    "removeTitle": "Remove this player?",
+    "removeConfirm": "{{name}} and all their scores will be deleted. This cannot be undone.",
+    "rename": "Rename player"
+  },
+  "resume": {
+    "title": "Continue your game?",
+    "description": "There is an unfinished game saved on this device.",
+    "continue": "Continue game",
+    "newGame": "New game"
+  },
+  "results": {
+    "title": "Final standings",
+    "description": "Ranked by grand total. Players with the same total share a position.",
+    "breakdownTitle": "Category breakdown",
+    "breakdownDescription": "Every category, side by side.",
+    "winner": "Winner",
+    "tie": "Tie",
+    "category": "Category",
+    "viewResults": "View results",
+    "backToScoring": "Back to scoring"
+  },
+  "session": {
+    "resetPlayer": "Reset scores",
+    "resetPlayerTitle": "Reset this player's scores?",
+    "resetPlayerConfirm": "All of {{name}}'s scores go back to zero. The other players are not affected.",
+    "newGame": "New game",
+    "newGameTitle": "Start a new game?",
+    "newGameConfirm": "The current game and every player's scores will be deleted.",
+    "boardSideTitle": "Change board side?",
+    "boardSideConfirm": "Switching to Side {{side}} clears the water scores of every player.",
+    "boardSideChange": "Change side"
+  },
   "languageSwitcher": {
     "label": "Language",
     "en": "English",
