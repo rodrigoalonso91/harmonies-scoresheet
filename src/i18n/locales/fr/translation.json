@@ -137,6 +137,11 @@
     "description": "Saisissez le total des points accordés par votre carte esprit. Exemple : si l'esprit donne 20 points, saisissez 20.",
     "totalPoints": "Total des points esprit"
   },
+  "about": {
+    "title": "À propos",
+    "independent": "Projet indépendant, créé pour les joueurs d'Harmonies.",
+    "gameCredits": "Harmonies est un jeu conçu par Johan Benvenuto, illustré par Maëva Da Silva et édité par Libellud."
+  },
   "developerFooter": {
     "showCredits": "Afficher les crédits",
     "hideCredits": "Masquer les crédits",

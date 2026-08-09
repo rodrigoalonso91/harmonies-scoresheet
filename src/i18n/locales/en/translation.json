@@ -137,6 +137,11 @@
     "description": "Enter the total points granted by your spirit card. Example: if the spirit gives 20 points, enter 20.",
     "totalPoints": "Total spirit points"
   },
+  "about": {
+    "title": "About",
+    "independent": "Independent companion project created for Harmonies players.",
+    "gameCredits": "Harmonies is designed by Johan Benvenuto, illustrated by Maëva Da Silva and published by Libellud."
+  },
   "developerFooter": {
     "showCredits": "Show credits",
     "hideCredits": "Hide credits",

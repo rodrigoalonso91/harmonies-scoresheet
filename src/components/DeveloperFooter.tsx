@@ -32,6 +32,20 @@ export function DeveloperFooter() {
         }`}
       >
         <div className="min-h-0">
+          {/* La atribución del juego va antes que los datos del desarrollador:
+              es lo que aclara que este proyecto no es oficial. */}
+          <section className="mx-auto max-w-2xl px-4 pt-4 text-center">
+            <h2 className="text-xs font-semibold uppercase tracking-wider text-neutral-500">
+              {t("about.title")}
+            </h2>
+            <p className="mt-1 text-sm leading-6 text-neutral-700">
+              {t("about.independent")}
+            </p>
+            <p className="text-sm leading-6 text-neutral-700">{t("about.gameCredits")}</p>
+          </section>
+
+          <hr className="mx-auto mt-4 max-w-2xl border-neutral-200" />
+
           <p className="flex flex-wrap items-center justify-center gap-x-2 gap-y-1 px-4 py-3">
             <span className="inline-flex items-center gap-1">
               {t("developerFooter.createdBy")}

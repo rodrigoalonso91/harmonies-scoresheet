@@ -137,6 +137,11 @@
     "description": "Ingresa el total de puntos otorgados por tu carta de espíritu. Ejemplo: si el espíritu da 20 puntos, ingresa 20.",
     "totalPoints": "Puntos totales del espíritu"
   },
+  "about": {
+    "title": "Acerca de",
+    "independent": "Proyecto complementario independiente, creado para los jugadores de Harmonies.",
+    "gameCredits": "Harmonies es un juego diseñado por Johan Benvenuto, ilustrado por Maëva Da Silva y publicado por Libellud."
+  },
   "developerFooter": {
     "showCredits": "Mostrar créditos",
     "hideCredits": "Ocultar créditos",
