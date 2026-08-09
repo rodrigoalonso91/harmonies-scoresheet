@@ -5,10 +5,11 @@ import type {
   PlayerColor,
   PlayerScoreSheet,
   PlayerScoreSheetPatch,
+  ScoringMode,
   SessionStatus,
 } from "@/types";
 import { MAX_PLAYERS, PLAYER_COLORS } from "@/types";
-import { createInitialSheet, normalizeWaterForSide } from "@/lib";
+import { clampStepIndex, createInitialSheet, normalizeWaterForSide } from "@/lib";
 
 export const SESSION_SCHEMA_VERSION = 1;
 
@@ -21,6 +22,8 @@ export type SessionAction =
   | { type: "SET_BOARD_SIDE"; boardSide: BoardSide }
   | { type: "UPDATE_SHEET"; playerId: string; patch: PlayerScoreSheetPatch }
   | { type: "RESET_PLAYER_SCORES"; playerId: string }
+  | { type: "SET_SCORING_MODE"; mode: ScoringMode }
+  | { type: "SET_ACTIVE_STEP"; index: number }
   | { type: "SET_STATUS"; status: SessionStatus };
 
 /** Invariante I3: los colores son únicos dentro de la sesión. */
@@ -60,6 +63,8 @@ export function createGameSession(names: string[], boardSide: BoardSide): GameSe
     boardSide,
     players,
     activePlayerId: players[0].id,
+    scoringMode: "by-player",
+    activeStepIndex: 0,
     status: "scoring",
     createdAt: now,
     updatedAt: now,
@@ -179,6 +184,16 @@ function reduce(session: GameSession, action: SessionAction): GameSession {
           sheet: createInitialSheet(session.boardSide),
         })),
       };
+
+    case "SET_SCORING_MODE":
+      return session.scoringMode === action.mode
+        ? session
+        : { ...session, scoringMode: action.mode };
+
+    case "SET_ACTIVE_STEP": {
+      const index = clampStepIndex(action.index);
+      return session.activeStepIndex === index ? session : { ...session, activeStepIndex: index };
+    }
 
     case "SET_STATUS":
       return session.status === action.status ? session : { ...session, status: action.status };

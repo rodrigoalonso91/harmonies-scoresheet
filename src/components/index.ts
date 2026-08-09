@@ -7,4 +7,5 @@ export * from "./LanguageSwitcher";
 export * from "./DeveloperFooter";
 export * from "./ui";
 export * from "./sheet";
+export * from "./category";
 export * from "./session";

@@ -40,6 +40,17 @@
     "continue": "Reprendre la partie",
     "newGame": "Nouvelle partie"
   },
+  "scoringMode": {
+    "label": "Mode de saisie",
+    "byPlayer": "Par joueur",
+    "byCategory": "Par catégorie"
+  },
+  "steps": {
+    "progress": "Étape {{current}} sur {{total}}",
+    "previous": "Précédent",
+    "next": "Suivant",
+    "goToStep": "Aller à l'étape {{index}} : {{label}}"
+  },
   "results": {
     "title": "Classement final",
     "description": "Classés par total général. Les joueurs à égalité partagent la même position.",

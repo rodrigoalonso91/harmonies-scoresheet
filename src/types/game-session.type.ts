@@ -18,6 +18,12 @@ export interface Player {
 
 export type SessionStatus = "setup" | "scoring" | "finished";
 
+/**
+ * `by-player`: un jugador y sus 11 campos (modo original).
+ * `by-category`: una categoría y todos los jugadores.
+ */
+export type ScoringMode = "by-player" | "by-category";
+
 export interface GameSession {
   id: string;
   schemaVersion: number;
@@ -26,6 +32,9 @@ export interface GameSession {
   players: Player[];
   /** Invariante I2: siempre referencia a un jugador existente. */
   activePlayerId: string;
+  scoringMode: ScoringMode;
+  /** Paso activo del modo por categoría. */
+  activeStepIndex: number;
   status: SessionStatus;
   createdAt: number;
   updatedAt: number;

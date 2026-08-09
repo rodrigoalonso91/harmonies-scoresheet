@@ -40,6 +40,17 @@
     "continue": "Continue game",
     "newGame": "New game"
   },
+  "scoringMode": {
+    "label": "Scoring mode",
+    "byPlayer": "By player",
+    "byCategory": "By category"
+  },
+  "steps": {
+    "progress": "Step {{current}} of {{total}}",
+    "previous": "Previous",
+    "next": "Next",
+    "goToStep": "Go to step {{index}}: {{label}}"
+  },
   "results": {
     "title": "Final standings",
     "description": "Ranked by grand total. Players with the same total share a position.",

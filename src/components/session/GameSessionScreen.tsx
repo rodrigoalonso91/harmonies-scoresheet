@@ -3,9 +3,10 @@ import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import type { BoardSide } from "@/types";
 import { hasWaterProgress, useActivePlayer, useGameSession } from "@/state";
+import { CategoryScoringView } from "../category";
 import { LanguageSwitcher } from "../LanguageSwitcher";
 import { PlayerScoreSheet } from "../sheet";
-import { BoardSideToggle, ConfirmDialog } from "../ui";
+import { BoardSideToggle, ConfirmDialog, ScoringModeToggle } from "../ui";
 import { AppHeader } from "./AppHeader";
 import { PlayerTabs } from "./PlayerTabs";
 import { usePlayerName } from "./player-presentation";
@@ -22,6 +23,7 @@ export function GameSessionScreen() {
 
   const activeIndex = session.players.findIndex((candidate) => candidate.id === player.id);
   const activeName = resolvePlayerName(player, activeIndex);
+  const byPlayer = session.scoringMode === "by-player";
 
   // Cambiar de lado normaliza el agua de todos: solo se confirma si hay algo que perder.
   const requestBoardSide = (side: BoardSide) => {
@@ -65,6 +67,10 @@ export function GameSessionScreen() {
         <AppHeader>
           <LanguageSwitcher />
           <BoardSideToggle side={boardSide} onChange={requestBoardSide} />
+          <ScoringModeToggle
+            mode={session.scoringMode}
+            onChange={(mode) => dispatch({ type: "SET_SCORING_MODE", mode })}
+          />
           <div className="flex flex-wrap gap-2">
             <button
               type="button"
@@ -73,13 +79,17 @@ export function GameSessionScreen() {
             >
               {t("results.viewResults")}
             </button>
-            <button
-              type="button"
-              onClick={() => setPending("reset-player")}
-              className="rounded-full border border-white/25 bg-white/5 px-4 py-2 text-sm font-semibold text-slate-100 transition hover:border-white hover:bg-white/10 hover:text-white"
-            >
-              {t("session.resetPlayer")}
-            </button>
+            {/* Reiniciar apunta al jugador activo, un concepto que solo existe
+                en el modo por jugador. */}
+            {byPlayer && (
+              <button
+                type="button"
+                onClick={() => setPending("reset-player")}
+                className="rounded-full border border-white/25 bg-white/5 px-4 py-2 text-sm font-semibold text-slate-100 transition hover:border-white hover:bg-white/10 hover:text-white"
+              >
+                {t("session.resetPlayer")}
+              </button>
+            )}
             <button
               type="button"
               onClick={() => setPending("new-game")}
@@ -90,9 +100,14 @@ export function GameSessionScreen() {
           </div>
         </AppHeader>
 
-        <PlayerTabs />
-
-        <PlayerScoreSheet />
+        {byPlayer ? (
+          <>
+            <PlayerTabs />
+            <PlayerScoreSheet />
+          </>
+        ) : (
+          <CategoryScoringView />
+        )}
       </div>
 
       <ConfirmDialog

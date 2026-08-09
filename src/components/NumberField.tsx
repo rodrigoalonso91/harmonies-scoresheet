@@ -11,9 +11,12 @@ interface Props {
   min?: number;
   max?: number;
   className?: string;
+  /** Contenido opcional antes y después de la etiqueta (punto de color, total). */
+  labelPrefix?: ReactNode;
+  labelSuffix?: ReactNode;
 }
 
-export function NumberField({ label, value, onChange, help, disabled = false, min = 0, max = 150, className }: Props) {
+export function NumberField({ label, value, onChange, help, disabled = false, min = 0, max = 150, className, labelPrefix, labelSuffix }: Props) {
   const { t } = useTranslation();
   const id = useId();
   const [draft, setDraft] = useState(String(value));
@@ -37,9 +40,15 @@ export function NumberField({ label, value, onChange, help, disabled = false, mi
 
   return (
     <div className={`grid gap-2 rounded-3xl border p-4 ${disabled ? "border-slate-200 bg-slate-100/80" : "border-slate-200 bg-white"} ${className ?? ""}`}>
-      <label htmlFor={id} className="text-sm font-semibold text-slate-900">
-        {label}
-      </label>
+      <div className="flex items-center justify-between gap-2">
+        <span className="flex min-w-0 items-center gap-2">
+          {labelPrefix}
+          <label htmlFor={id} className="truncate text-sm font-semibold text-slate-900">
+            {label}
+          </label>
+        </span>
+        {labelSuffix}
+      </div>
       {help && <span className="text-xs leading-5 text-slate-500">{help}</span>}
       {/* Los botones quedan fuera del <label>: dentro, tocarlos enfocaría el input
           y abriría el teclado en móvil, que es justo lo que las flechas evitan. */}

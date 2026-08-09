@@ -1,14 +1,23 @@
 import type { GameSession } from "@/types";
 import { MAX_PLAYERS } from "@/types";
+import { clampStepIndex } from "@/lib";
 import { SESSION_SCHEMA_VERSION } from "./game-session-reducer";
 
 const STORAGE_KEY = "harmonies-points:session";
 
 /**
+ * `scoringMode` y `activeStepIndex` se agregaron después de la v1 del esquema.
+ * Son aditivos y tienen valor por defecto, así que no justifican subir la
+ * versión: una partida guardada antes de esa feature se sigue pudiendo continuar.
+ */
+type StoredSession = Omit<GameSession, "scoringMode" | "activeStepIndex"> &
+  Partial<Pick<GameSession, "scoringMode" | "activeStepIndex">>;
+
+/**
  * Validación defensiva: una sesión de otra `schemaVersion`, corrupta o escrita a
  * mano se descarta en silencio y la app arranca en el setup.
  */
-function isValidSession(candidate: unknown): candidate is GameSession {
+function isValidSession(candidate: unknown): candidate is StoredSession {
   if (typeof candidate !== "object" || candidate === null) return false;
 
   const session = candidate as Partial<GameSession>;
@@ -26,6 +35,14 @@ function isValidSession(candidate: unknown): candidate is GameSession {
   );
 }
 
+function withDefaults(session: StoredSession): GameSession {
+  return {
+    ...session,
+    scoringMode: session.scoringMode === "by-category" ? "by-category" : "by-player",
+    activeStepIndex: clampStepIndex(session.activeStepIndex ?? 0),
+  };
+}
+
 export function loadSession(): GameSession | null {
   if (typeof window === "undefined") return null;
 
@@ -34,7 +51,7 @@ export function loadSession(): GameSession | null {
     if (!raw) return null;
 
     const parsed: unknown = JSON.parse(raw);
-    return isValidSession(parsed) ? parsed : null;
+    return isValidSession(parsed) ? withDefaults(parsed) : null;
   } catch {
     return null;
   }
