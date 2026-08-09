@@ -39,11 +39,17 @@ export function NumberField({ label, value, onChange, help, disabled = false, mi
   const step = (delta: number) => onChange(Math.min(max, Math.max(min, value + delta)));
 
   return (
-    <div className={`grid gap-2 rounded-3xl border p-4 ${disabled ? "border-slate-200 bg-slate-100/80" : "border-slate-200 bg-white"} ${className ?? ""}`}>
-      <div className="flex items-center justify-between gap-2">
+    // `flex flex-col` y no `grid`: la columna implícita de un grid se dimensiona
+    // por el min-content de sus hijos, y la fila del stepper (dos botones de
+    // 44px más el input) desbordaba la tarjeta en pantallas angostas.
+    <div className={`flex flex-col gap-2 rounded-3xl border p-4 ${disabled ? "border-slate-200 bg-slate-100/80" : "border-slate-200 bg-white"} ${className ?? ""}`}>
+      {/* La etiqueta envuelve en varias líneas: forzarla a una sola (`truncate`)
+          le da un ancho mínimo igual al texto completo y desborda la tarjeta en
+          pantallas angostas. */}
+      <div className="flex items-start justify-between gap-2">
         <span className="flex min-w-0 items-center gap-2">
           {labelPrefix}
-          <label htmlFor={id} className="truncate text-sm font-semibold text-slate-900">
+          <label htmlFor={id} className="min-w-0 text-sm font-semibold text-slate-900">
             {label}
           </label>
         </span>
