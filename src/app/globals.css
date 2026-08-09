@@ -17,3 +17,14 @@ body {
   color: var(--foreground);
   font-family: "Avenir Next", "Segoe UI", sans-serif;
 }
+
+/* Los campos de puntaje usan sus propias flechas; sin esto quedarían duplicadas. */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  appearance: none;
+  margin: 0;
+}
+
+input[type="number"] {
+  appearance: textfield;
+}

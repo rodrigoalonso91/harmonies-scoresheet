@@ -13,6 +13,10 @@
   "common": {
     "cancel": "Cancel"
   },
+  "numberField": {
+    "increase": "Increase {{label}}",
+    "decrease": "Decrease {{label}}"
+  },
   "setup": {
     "title": "New game",
     "description": "Choose how many players are at the table. You can rename them or add more later.",
